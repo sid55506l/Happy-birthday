@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Birthday Riddle - Dr. Livika</title>
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #f6d365, #fda085);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 2rem;
+      text-align: center;
+      overflow: hidden;
+      animation: backgroundShift 10s ease-in-out infinite alternate;
+    }
+
+    @keyframes backgroundShift {
+      0% { background: linear-gradient(135deg, #f6d365, #fda085); }
+      100% { background: linear-gradient(135deg, #84fab0, #8fd3f4); }
+    }
+
+    h1 {
+      font-family: 'Pacifico', cursive;
+      font-size: 2.5rem;
+      color: #fff;
+      margin-bottom: 1rem;
+      animation: fadeInDown 1s ease forwards;
+    }
+
+    p {
+      font-size: 1.2rem;
+      color: #fff;
+      margin-bottom: 1.5rem;
+      animation: fadeInDown 1.5s ease forwards;
+    }
+
+    input[type="text"] {
+      padding: 0.8rem;
+      font-size: 1rem;
+      border: none;
+      border-radius: 8px;
+      width: 80%;
+      max-width: 300px;
+      margin-bottom: 1rem;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+      animation: popIn 1.8s ease forwards;
+    }
+
+    button {
+      padding: 0.7rem 1.4rem;
+      font-size: 1rem;
+      border: none;
+      border-radius: 10px;
+      background-color: #ff6b81;
+      color: white;
+      cursor: pointer;
+      display: none;
+      animation: pulse 2s infinite;
+    }
+
+    #feedback {
+      margin-top: 0.8rem;
+      font-weight: bold;
+      font-size: 1rem;
+      color: #fff;
+      min-height: 1.2rem;
+    }
+
+    @keyframes fadeInDown {
+      0% { opacity: 0; transform: translateY(-20px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes popIn {
+      0% { opacity: 0; transform: scale(0.9); }
+      100% { opacity: 1; transform: scale(1); }
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+    }
+
+    @media (max-width: 500px) {
+      h1 { font-size: 2rem; }
+      p { font-size: 1rem; }
+    }
+      .sparkle {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      background: gold;
+      border-radius: 50%;
+      animation: sparkleAnim 1s ease-out forwards;
+      pointer-events: none;
+      z-index: 999;
+    }
+
+    @keyframes sparkleAnim {
+      0% {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+      }
+      100% {
+        opacity: 0;
+        transform: scale(0.5) translateY(-50px);
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1>🎉 Dr. Livika's Birthday Riddle 🎉</h1>
+  <p>Which is the largest bone in the human body?</p>
+  <input type="text" id="answer" placeholder="Type your answer..." />
+  <div id="feedback"></div>
+  <button id="nextButton" onclick="goToNext()">Next Surprise 🎁</button>
+
+  <script>
+    const input = document.getElementById('answer');
+    const feedback = document.getElementById('feedback');
+    const nextButton = document.getElementById('nextButton');
+
+    input.addEventListener('keypress', (e) => {
+  if (e.key === 'Enter') {
+    const ans = input.value.trim().toLowerCase();
+    if (ans === 'femur') {
+      feedback.textContent = '✅ Correct!';
+      nextButton.style.display = 'inline-block';
+      triggerSparkles();
+    } else {
+      feedback.textContent = '❌ Try again...';
+      nextButton.style.display = 'none';
+    }
+  }
+});
+
+    function goToNext() {
+      window.location.href = 'next.html'; // Replace with actual next page
+    }
+      function triggerSparkles() {
+      for (let i = 0; i < 20; i++) {
+        const sparkle = document.createElement('div');
+        sparkle.classList.add('sparkle');
+        sparkle.style.left = (Math.random() * window.innerWidth) + 'px';
+        sparkle.style.top = (Math.random() * window.innerHeight) + 'px';
+        document.body.appendChild(sparkle);
+
+        setTimeout(() => {
+          sparkle.remove();
+        }, 1000);
+      }
+    }
+  </script>
+</body>
+</html>

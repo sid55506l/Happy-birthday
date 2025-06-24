@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Happy Birthday Honey!</title>
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      padding: 0 1rem;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #ffecd2, #fcb69f);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    h1 {
+      font-family: 'Pacifico', cursive;
+      font-size: 3rem;
+      color: #d63384;
+      margin-bottom: 1rem;
+      animation: pop 1s ease-in-out;
+    }
+
+    .typing {
+      color: #333;
+      font-size: 1.2rem;
+      border-right: 2px solid #333;
+      overflow: hidden;
+      display: inline-block;
+      animation: typing 8s steps(80, end) forwards, blink 0.75s step-end infinite;
+      max-width: 90vw;
+      white-space: nowrap;
+    }
+
+    @keyframes typing {
+      from { width: 0; }
+      to { width: 100%; }
+    }
+
+    @keyframes blink {
+      50% { border-color: transparent; }
+    }
+
+    .gift {
+      font-size: 5rem;
+      animation: bounce 1.5s infinite;
+      margin-bottom: 1.5rem;
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-15px); }
+    }
+
+    @keyframes pop {
+      from { opacity: 0; transform: scale(0.8); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    .confetti-piece {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      background-color: #ff69b4;
+      opacity: 0.7;
+      animation: fall 3s linear infinite;
+    }
+
+    @keyframes fall {
+      0% { transform: translateY(-100vh) rotate(0); }
+      100% { transform: translateY(100vh) rotate(360deg); }
+    }
+
+    audio {
+      display: none;
+    }
+
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 2rem;
+      }
+      .gift {
+        font-size: 3rem;
+      }
+      .typing {
+        font-size: 1rem;
+        white-space: normal;
+        border-right: none;
+        animation: none;
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Confetti generator -->
+  <script>
+    for (let i = 0; i < 50; i++) {
+      const confetti = document.createElement('div');
+      confetti.className = 'confetti-piece';
+      confetti.style.left = `${Math.random() * 100}%`;
+      confetti.style.backgroundColor = ['#ff69b4', '#ffd700', '#87ceeb', '#98fb98'][Math.floor(Math.random() * 4)];
+      confetti.style.animationDelay = `${Math.random() * 3}s`;
+      confetti.style.transform = `rotate(${Math.random() * 360}deg)`;
+      document.body.appendChild(confetti);
+    }
+  </script>
+
+  <h1>Happy Birthday Honey! 💖</h1>
+  <div class="gift">🎁</div>
+  <p class="typing">
+    You're the best ever and I love you so so much. I hope you liked this.  
+    I wish I could do more.  
+    Have a really great birthday and everything is going to be alright.  
+    We are going to be strong forever.  
+    Happy Birthday once again 💕
+  </p>
+
+  
+
+</body>
+</html>
